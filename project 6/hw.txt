@@ -1,0 +1,122 @@
+William Randall
+UID: 805167986
+
+1a.
+
+#include <iostream>
+using namespace std;
+    
+    int main()
+    {
+        int arr[4] = { 0, 1, 2, 3 };
+        int* ptr = arr;
+
+        *ptr = arr[ 1 ];               // set arr[0] to 1
+        *(ptr + 1) = arr[ 0 ] * 10;    // set arr[1] to 10
+        ptr += 2;
+        ptr[0] = arr[ 1 ] * 10;        // set arr[2] to 100
+        ptr[1] = 1000;                 // set arr[3] to 1000
+	ptr +=2;			//moves to the end of the array
+
+        while (ptr > arr)		//so it doesn't over step boundaries
+        {
+            ptr--;
+            cout << " " << *ptr;
+        }
+        cout << endl; 
+        return( 0 ); 
+    }
+
+1b.
+Ptr must be passed by reference with "&".  If it is not like this then its value will not be changed in the function, so the following cout statements will not output the correct values. Change the function definition to the following.
+
+    void biggest(int value1, int value2, int * &resultPtr)
+    {
+        if( value1 > value2 ) 
+        {
+               *resultPtr = value1;
+        } 
+        else
+        {
+               *resultPtr = value2; 
+        }
+    }
+
+1c.
+It will not work because the p pointer is not initialized to new.  To fix just change the main to
+
+int main()
+    {
+        int* p = new int;
+        biggest(15, 20, p); 
+        cout << "The biggest value is " << *p << endl;
+	delete p;
+        return( 0 );
+    }
+
+1d.
+It was checking if the memory locations were the same so the bool was always returning false.  To fix this you add the * in front of all the str1's and str2's except the ones where you are moving down the cstrings ( the str1++ ).
+
+bool match(const char str1[], const char str2[])
+{
+    bool result = true;
+    while (*str1 != 0  &&  *str2 != 0)  // zero bytes at ends.
+    {
+        if (*str1 != *str2)  // compare corresponding characters
+        {
+            result = false;
+            break;
+        }
+        str1++;            // advance to the next character
+        str2++;
+    }
+    if (result)
+    {
+        result = (*str1 == *str2);    // both ended at same time?
+    }
+    return( result );
+}
+
+1e.
+
+The computeFibonacciSequence returns the pointer to the array that is deleted after the end of the function so the pointer points out of its bounds in the main function.  Therefore, it gives an answer that is not useful.
+
+2.
+
+	1. - f
+	2. - g
+	3. - a
+	4. - b
+	5. - d
+	6. - c
+	7. - b
+	8. - e
+	9. - h
+3.
+First, the pointer is initialized to be equal to what minimart returns.  Minimart checks the values of the array in the 1st and 3rd positions and sees which is lower, then it returns the pointer to the value that is lower.  The pointer is now at position 3 in the array.  Then the value at position 4 is changed to 9.  Then the pointer is moved to position 5.  Then the value at position 5 is changed to -1.  Then the value at position 2 is changed to 79.  Then the program outputs the difference between the pointer to the last value of the array and where the pointer (ptr) is currently.  This outputs "diff=1" because the pointer is at position 5 in the array and that is 1 memory location off from the pointer to the last value in the array.  Then the function swap1 is called.  This function maps the pointer at the first value in the array to the pointer at the second value of the array and vice versa.  These pointers are mapped to a and b, but this does nothing because those variables are killed at the end of the function so nothing happens to the array. Then the function swap2 is called.  This function takes the value at position 1 and swaps it with the value at position 3 and vice versa.  This actually changes the array because it is changing the values at certain memory locations.  Then finally there is a for loop which loops through the array and outputs
+4
+79
+5
+9
+-1
+19
+Then the program returns 0 and ends. 
+
+4.
+
+void deleteDigits (char* a)
+{
+    char* b = a;	//makes another pointer that will be the lagging pointer
+    while (*a != '\0')
+    {
+        if(!isdigit(*a))	// runs if a is not number
+        {
+            *b = *a;	//if a is not a number the a value will now be the b value // this moves the next non digit to the first digits place
+            b++;	//inc b
+        }
+        a++;	//inc a
+    }
+    *b = '\0';	//this gets rid of the excess letters that are not going to be used by making the last character the ending character of a cstring
+}
+
+
