@@ -1,0 +1,66 @@
+William Randall
+UID: 805167986
+
+A brief description of notable obstacles you overcame.
+
+One obstacle I overcame was understanding how to use the scope resolution operator in my function definitions and in the use of the enum KIND.  I had to always trace back my steps whenever I needed to use the scope operator so that I could know I was using it in the correct way.  Another obstacle I overcame was understanding how the "#include" worked with header files.  I had to test a bunch of ways that header files pass on data to other files to fully understand how to set them up and use them.
+
+A list of the test data that could be used to thoroughly test your functions, along with the reason for each test. You must note which test cases your program does not handle correctly. (This could happen if you didn't have time to write a complete solution, or if you ran out of time while still debugging a supposedly complete solution.) Notice that most of this portion of your report can be written just after you read the requirements in this specification, before you even start designing your program.
+
+BoxOffice b;
+
+Ticket t( "Pavillion Row 13", 45, "Dodgers vs. Brewers", "Dodger Stadium", 150.00, Ticket::KIND::ATHLETICGAME, "August 1, 7:30PM" );
+    assert( std::to_string( t.getPrice() ) == "150.000000" );
+    assert( t.getKind() == Ticket::KIND::ATHLETICGAME );
+    assert( t.getRow() == "Pavillion Row 13" );
+    assert( t.getSeat() == 45 );
+    
+    t = b.buyTicket( "Orchestra Row U", 20, "Episode VII: The Force Awakens", "abc" ,Ticket::KIND::MOVIE, "September 1, 7:30PM" );
+    assert( std::to_string( t.getPrice() ) == "0.000000" );
+    assert( t.getKind() == Ticket::KIND::MOVIE );
+    assert( t.getRow() == "Orchestra Row U" );
+    assert( t.getSeat() == 20 );
+    assert( t.getEvent() == "Episode VII: The Force Awakens");
+    assert( t.getVenue() == "abc");
+    assert( t.getDayTime() == "September 1, 7:30PM");
+    t.setPrice(5);
+    assert( std::to_string( t.getPrice() ) == "5.000000");
+    
+    
+    t = b.buyRoyceHallStudentTicket( "Orchestra Row U", 20, "Episode VII: The Force Awakens", Ticket::KIND::MOVIE, "September 1, 7:30PM" );
+    assert( std::to_string( t.getPrice() ) == "20.000000" );
+    assert( t.getKind() == Ticket::KIND::MOVIE );
+    assert( t.getRow() == "Orchestra Row U" );
+    assert( t.getSeat() == 20 );
+
+    t = b.buyRoyceHallStaffTicket( "Balcony Row J", 120, "abc abc", Ticket::KIND::OTHER, "October 1, 7:30PM" );
+    assert( std::to_string( t.getPrice() ) == "35.000000" );
+    assert( t.getKind() == Ticket::KIND::OTHER );
+    assert( t.getRow() == "Balcony Row J" );
+    assert( t.getSeat() == 120 );
+    
+    t = b.buyRoyceHallStaffTicket( "Orchestra Row J", 120, "abc abc", Ticket::KIND::OTHER, "7:30PM" );
+    assert( std::to_string( t.getPrice() ) == "70.000000" );
+    assert( t.getKind() == Ticket::KIND::OTHER );
+    assert( t.getRow() == "Orchestra Row J" );
+    assert( t.getEvent() == "abc abc");
+    assert( t.getDayTime() == "7:30PM");
+    assert( t.getSeat() == 120 );
+
+    t = b.buyRoyceHallTicket( "Orchestra Row A", 12, "Barry Manilow Live In Concert", Ticket::KIND::CONCERT, "November 1, 7:30PM" );
+    assert( std::to_string( t.getPrice() ) == "130.000000" );
+    assert( t.getKind() == Ticket::KIND::CONCERT );
+    assert( t.getRow() == "Orchestra Row A" );
+    assert( t.getSeat() == 12 );
+    
+    t = b.buyTicket( "Pavillion Row 13", 45, "Dodgers vs. Brewers", "Dodger Stadium", Ticket::KIND::ATHLETICGAME, "August 1, 7:30PM" );
+    t.setPrice( 150.00 );
+    assert(t.getPrice() == 150);
+    
+    t = b.buyRoyceHallStudentTicket( "Orchestra Row U", 20, "Episode VII: The Force Awakens", Ticket::KIND::MOVIE, "September 1, 7:30PM" );
+    assert( t.getRow() == "Orchestra Row U" );
+    assert( t.getSeat() == 20);
+    assert(to_string(t.getPrice()) == "20.000000");
+    assert( t.getEvent() == "Episode VII: The Force Awakens" );
+    assert( t.getKind() == Ticket::KIND::MOVIE );
+    assert( t.getDayTime() == "September 1, 7:30PM" );

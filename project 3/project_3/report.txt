@@ -1,0 +1,46 @@
+William Randall
+UID : 805167986
+
+A brief description of notable obstacles you overcame.
+
+First, I had to understand the number function given to me.  The way it was coded seemed to perplex me for a while, and once I fully understood what it did and what it gave me it became the central function to my solution.  Second, I had to figure out what was a valid string and what was not.  Then I had to find ways to move around in the string scanning what values are correctly inputed.  I had a hard time trying to understand where I was in the string based off the position the number function passed to me by reference.  Finally,  the last challenge I faced was implementing the number function in each of the int functions to move through the string and output an integer.
+
+A description of the design of your program. You should use  pseudocode in this description where it clarifies the presentation.
+
+Initially I ran the number function on the beginning of the string.  This would give me the position of the ':', or it would tell me that there was no number before the ':'.  Then I used the position I received from that to check if there was a ':', and I used it to read in the seconds on the clock.  After I read in the seconds on the clock I moved over one character and initialized the number function to get the "s/m" value.  Then I checked if the correct number of spaces surrounded the "s/m."  Then I read in the value of the meters, checked the spaces around the 'm', and finally, I got the value of the b/m and made sure there was nothing after that number.  Throughout my code I would if else statements to immediately cut out of the bool if something did not match with the correct cases.  I also used asserts to check whether the base cases worked consistently.  The other int functions were not as challenging to do.  I used the number function and found the position of the minutes to seconds to s/m to distance to b/m.  I cut up that function and used parts of it in each of the other int functions. Once I found where one number was in the string I could add to the position and use the number function to find the position of the next number.
+
+A list of the test data that could be used to thoroughly test your program, along with the reason for each test. You don't have to include the results of the tests, but you must note which test cases your program does not handle correctly. (This could happen if you didn't have time to write a complete solution, or if you ran out of time while still debugging a supposedly complete solution.)
+
+":14    28 s/m     42 m    110"
+"        :14         28 s/m         42 m      110"
+"1:14    28 s/m     42 m    110"
+"59:14     28 s/m     42 m    110"
+"59:59    28 s/m     42 m    110"
+"59:59    999 s/m     42 m    110"
+"59:59    999 s/m     42 m    999"
+":14 28 s/m 42 m 110"
+":07 28 s/m 42 m 110"
+"1:14 28 s/m 42 m 110"
+^True^
+
+""
+"asdf:14    28 s/m     42 m    110"
+":14    28 s/m     42 m    110 asdf"
+":14     28       s/m    42 m    110"
+"0:14    28 s/m     42 m    110"
+"0000:14    00028 s/m     00042 m   000110"
+":-14    -28 s/m     -42 m   -110"
+"555:14    28 s/m    42 m   110"
+":555      28 s/m      42 m  110"
+":14    99123 s/m    42 m   110"
+":14    0 s/m            42 m   110"
+":14    28 s/m         42 m   99123"
+":14    28 s/m         42 m   0"
+"00000:14 28 s/m 42 m 110"
+":000007 28 s/m 42 m 110"
+"1:14 28      s/m 42 m 111"
+"1:14 28 s/m 42      m 111"
+"1:14 28 s/m 42 m 1111    "
+":7 28 s/m 42 m 111"
+^False^
+

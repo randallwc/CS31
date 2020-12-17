@@ -1,0 +1,70 @@
+1-
+endlendl
+endline
+
+2-
+It makes a diagonal line from top right to bottom left of # with the number of # based on an input number.
+3-
+	#include <iostream>
+	using namespace std;
+
+	int main()
+	{
+	    int len;
+
+	    cout << "Enter a number: ";
+	    cin >> len;
+
+	    for (int i = 0; i < len; i++)
+	    {
+		int j = i+1;
+
+		    while (j < len)
+		    {
+			j++;
+		        cout << " ";
+		    }
+		    cout << "#" << endl;
+	    }
+	}
+4-
+	#include <iostream>
+	using namespace std;
+
+	int main()
+	{
+	    int len;
+	    int i = 0;
+
+	    cout << "Enter a number: ";
+	    cin >> len;
+
+	    if(len<=0){return(0);}
+
+	    do{
+		int j = i+1;
+		i++;
+
+		    while (j < len)
+		    {
+			j++;
+		        cout << " ";
+		    }
+		    cout << "#" << endl;
+	    }while(i < len);
+	}
+5-
+    switch(weekday){
+        case 1:
+            cout << "rainy days and mondays get me down";
+            break;
+        case 2:
+            cout << "ruby tuesday";
+            break;
+        case 6:
+        case 7:
+            cout << "wonderful weekend";
+            break;
+        default:
+            cout << "regular day";
+    }

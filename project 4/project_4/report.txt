@@ -1,0 +1,60 @@
+William Randall
+UID: 805167986
+
+A brief description of notable obstacles you overcame.
+
+The first obstacle I faced was understanding that the <, >, and = operators could be used with strings to determine alphabetical order.  At first I was trying to loop through the string and compare each value to another.  The second major obstacle I faced was making a shift right function that didn't begin to read the output of what it was printing to the array and repeat values over and over.  To fix this I began changing the values of the array from the end of the array instead of the beginning.  This allowed me to shift the array and not get a loop of the first few array values.
+
+A list of the test data that could be used to thoroughly test your functions, along with the reason for each test. You must note which test cases your program does not handle correctly. (This could happen if you didn't have time to write a complete solution, or if you ran out of time while still debugging a supposedly complete solution.) Notice that most of this portion of your report can be written just after you read the requirements in this specification, before you even start designing your program.
+
+string a[6] = { "alpha", "beta", "gamma", "gamma", "beta", "delta" };
+string a2[6] = { "gamma", "gamma", "delta", "beta", "beta", "alpha" };
+string folks[8] = {"samwell", "jon", "margaery", "daenerys","tyrion", "sansa", "howard123", "jon"};
+string b[3] = {"","a","cc"};
+string c[5] = {"5","4","3","2","1"};
+string c2[5] = {"5","4","3","2","3"};
+string p[5] = {"qa","ws","ed","rf","t"};
+string foo[10] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+
+assert(hasDuplicates(a, 6 ) == true);
+assert(hasDuplicates(a, 3 ) == false);
+assert(hasDuplicates(a, 0) == false);
+assert(hasDuplicates(a, -1) == false);
+assert(hasDuplicates(a, 1) == false);
+    
+assert(countAllDigits(folks, -100) == -1);
+assert(countAllDigits(folks, 3) == 0);
+assert(countAllDigits(folks, 8) == 3);
+    
+assert(isInDecreasingOrder(b, 0)== true);
+assert(isInDecreasingOrder(b, 1)== true);
+assert(isInDecreasingOrder(a2, 6) == true);
+assert(isInDecreasingOrder(c, 5) == true);
+assert(isInDecreasingOrder(c2, 5) == false);
+assert(isInDecreasingOrder(a, 2)== false);
+assert(isInDecreasingOrder(a, 4)== false);
+assert(isInDecreasingOrder(folks, 8)== false);
+
+//some of these change the value of the array so it must be changed back after running each of these functions
+assert(shiftRight(folks, -100, 100, "hi") == -1);
+assert(shiftRight(folks, 8, -100, "hi") == -1);
+assert(shiftRight(folks, 8, 0, "hi") == 0);
+assert(shiftRight(folks, 0, 10, "hi") == 0);
+assert(shiftRight(p, 5, 5, "foo")==5);
+assert(shiftRight(p, 5, 10, "foo")==5);
+assert(shiftRight(p, 5, 3, "asdf")==3);
+assert(shiftRight(foo, 10, 3, "foo")==3);
+assert(shiftRight(p, 5, 2, "hi")==2);
+ 
+assert(find(folks, 0, "hi")== -1);
+assert(find(folks, -100, "hi")== -1);
+assert(find(folks, 8, "margaery")==2);
+assert(find(folks, 4, "jon")==1);
+assert(find(folks, 8, "howard123")==6);
+assert(find(folks, 8, "bob")== -1);
+assert(find(a,6,"gamma")==2);
+
+//some of these change the value of the array so it must be changed back after running each of these functions
+assert(replaceAllCharacters(a, 0, 'a', '_')== -1);
+assert(replaceAllCharacters(a, -190, 'a', '_')== -1);
+assert(replaceAllCharacters(folks, 8, 'a', '+')== 7);
